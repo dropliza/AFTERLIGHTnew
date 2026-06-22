@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AFTERLIGHT — оформление</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wdth,wght@6..144,-10,25..100,100..1000&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="./stylesheets/reset.css" />
+  <link rel="stylesheet" href="./stylesheets/style.css" />
+  <link rel="stylesheet" href="./stylesheets/tickets.css" />
+</head>
+
+<body class="tickets-page">
+  <header class="topbar">
+    <a class="logo" href="./index.html">AFTERLIGHT</a>
+    <nav class="topnav">
+      <a href="./routes.html">МАРШРУТЫ</a>
+      <a href="./tickets.html" aria-current="page">БИЛЕТЫ</a>
+      <a href="./contacts.html">КОНТАКТЫ</a>
+    </nav>
+  </header>
+
+  <div class="ticker ticker--fixed" aria-hidden="true">
+    <div class="ticker__track">
+      <span class="ticker__text">ОФОРМЛЕНИЕ ПРОПУСКА</span>
+      <span class="ticker__dot" aria-hidden="true">•</span>
+      <span class="ticker__text">ВЫБЕРИ МАРШРУТ И МЕСТО</span>
+      <span class="ticker__dot" aria-hidden="true">•</span>
+    </div>
+  </div>
+
+  <main class="checkout">
+    <header class="checkout__head">
+      <p class="checkout__tag">посадка</p>
+      <h1 class="checkout__title">оформление</h1>
+      <p class="checkout__sub" id="checkoutSub">выберите маршрут, дату и место в салоне</p>
+    </header>
+
+    <div class="checkout__layout">
+      <div class="checkout__flow">
+        <section class="checkout__panel checkout__panel--routes" aria-labelledby="blockRoute">
+          <header class="checkout__panel-head">
+            <span class="checkout__step">01</span>
+            <div class="checkout__panel-titles">
+              <h2 id="blockRoute">маршрут</h2>
+              <p>выберите ночную линию</p>
+            </div>
+          </header>
+
+          <div class="route-pick" id="routePick" role="listbox" aria-label="Выбор маршрута">
+            <button type="button" class="route-pick__item is-active" role="option" aria-selected="true" data-slug="neon">
+              <span class="route-pick__code">NT·01</span>
+              <span class="route-pick__name">Neon Transit</span>
+              <span class="route-pick__meta"><span>47 мин</span><span>22:30</span></span>
+              <span class="route-pick__price">2 400 ₽</span>
+            </button>
+            <button type="button" class="route-pick__item" role="option" aria-selected="false" data-slug="memory">
+              <span class="route-pick__code">MD·02</span>
+              <span class="route-pick__name">Memory District</span>
+              <span class="route-pick__meta"><span>52 мин</span><span>21:00</span></span>
+              <span class="route-pick__price">2 100 ₽</span>
+            </button>
+            <button type="button" class="route-pick__item" role="option" aria-selected="false" data-slug="signal">
+              <span class="route-pick__code">SV·03</span>
+              <span class="route-pick__name">Signal Void</span>
+              <span class="route-pick__meta"><span>44 мин</span><span>23:15</span></span>
+              <span class="route-pick__price">2 600 ₽</span>
+            </button>
+            <button type="button" class="route-pick__item" role="option" aria-selected="false" data-slug="loop">
+              <span class="route-pick__code">NL·04</span>
+              <span class="route-pick__name">Night Loop</span>
+              <span class="route-pick__meta"><span>55 мин</span><span>00:00</span></span>
+              <span class="route-pick__price">2 200 ₽</span>
+            </button>
+          </div>
+        </section>
+
+        <div class="checkout__split">
+          <section class="checkout__panel" aria-labelledby="blockDate">
+            <header class="checkout__panel-head">
+              <span class="checkout__step">02</span>
+              <div class="checkout__panel-titles">
+                <h2 id="blockDate">дата и время</h2>
+                <p>когда отправляемся</p>
+              </div>
+            </header>
+
+            <label class="field">
+              <span class="field__label">дата</span>
+              <input type="date" class="field__input" id="dateInput" required />
+            </label>
+
+            <div class="field">
+              <span class="field__label">отправление</span>
+              <div class="time-slots" id="timeSlots" role="radiogroup" aria-label="Время отправления">
+                <button type="button" class="time-slots__btn" data-time="21:00" aria-pressed="false">21:00</button>
+                <button type="button" class="time-slots__btn is-active" data-time="22:30" aria-pressed="true">22:30</button>
+                <button type="button" class="time-slots__btn" data-time="23:15" aria-pressed="false">23:15</button>
+                <button type="button" class="time-slots__btn" data-time="00:00" aria-pressed="false">00:00</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="checkout__panel checkout__panel--seats" aria-labelledby="blockSeats">
+            <header class="checkout__panel-head">
+              <span class="checkout__step">03</span>
+              <div class="checkout__panel-titles">
+                <h2 id="blockSeats">место</h2>
+                <p>нужно <span id="seatsNeeded">1</span></p>
+              </div>
+            </header>
+
+            <div class="seat-deck">
+              <div class="seat-deck__arc" aria-hidden="true"></div>
+              <p class="seat-deck__label">forward</p>
+              <div class="seat-grid" id="seatGrid" role="group" aria-label="Схема мест"></div>
+              <div class="seat-deck__legend">
+                <span><i class="seat-legend"></i> свободно</span>
+                <span><i class="seat-legend seat-legend--taken"></i> занято</span>
+                <span><i class="seat-legend seat-legend--picked"></i> ваше</span>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section class="checkout__panel" aria-labelledby="blockGuest">
+          <header class="checkout__panel-head">
+            <span class="checkout__step">04</span>
+            <div class="checkout__panel-titles">
+              <h2 id="blockGuest">пассажир</h2>
+              <p>данные для посадочного</p>
+            </div>
+          </header>
+
+          <div class="guest-row">
+            <label class="field">
+              <span class="field__label">имя</span>
+              <input type="text" class="field__input" id="nameInput" placeholder="как в документе" autocomplete="name" />
+            </label>
+            <label class="field">
+              <span class="field__label">email</span>
+              <input type="email" class="field__input" id="emailInput" placeholder="для подтверждения" autocomplete="email" />
+            </label>
+            <label class="field field--narrow">
+              <span class="field__label">гостей</span>
+              <input type="number" class="field__input" id="guestInput" min="1" max="4" value="1" />
+            </label>
+          </div>
+        </section>
+      </div>
+
+      <aside class="checkout__aside">
+        <article class="order-card" id="orderCard">
+          <div class="order-card__noise" aria-hidden="true"></div>
+
+          <div class="order-card__body">
+            <header class="order-card__head">
+              <span class="order-card__brand">AFTERLIGHT</span>
+              <span class="order-card__type">boarding pass</span>
+              <span class="order-card__code" id="orderCode">NT·01</span>
+            </header>
+
+            <hr class="order-card__rule" />
+
+            <h3 class="order-card__route" id="orderRoute">Neon Transit</h3>
+
+            <dl class="order-card__meta">
+              <div><dt>дата</dt><dd id="orderDate">—</dd></div>
+              <div><dt>отпр.</dt><dd id="orderTime">22:30</dd></div>
+              <div><dt>место</dt><dd id="orderSeat">—</dd></div>
+              <div><dt>гостей</dt><dd id="orderGuests">1</dd></div>
+            </dl>
+
+            <div class="order-card__total">
+              <span>итого</span>
+              <strong id="orderTotal">2 400 ₽</strong>
+            </div>
+
+            <button type="button" class="order-card__pay" id="payBtn">ПЕРЕЙТИ К ОПЛАТЕ</button>
+            <p class="order-card__note">нажимая кнопку, вы подтверждаете условия поездки</p>
+          </div>
+
+          <aside class="order-card__stub" aria-hidden="true">
+            <span class="order-card__serial" id="orderSerial">AL 190 021</span>
+            <div class="order-card__barcode"></div>
+          </aside>
+        </article>
+
+        <a class="checkout__back" href="./routes.html">← вернуться к маршрутам</a>
+      </aside>
+    </div>
+  </main>
+
+  <div class="pay-overlay" id="payOverlay" hidden aria-hidden="true">
+    <div class="pay-overlay__scan" aria-hidden="true"></div>
+    <div class="pay-overlay__inner">
+      <p class="pay-overlay__system">AFTERLIGHT · payment protocol</p>
+      <p class="pay-overlay__label">подключение к шлюзу</p>
+      <div class="pay-overlay__bar"><span id="payBar"></span></div>
+      <p class="pay-overlay__status" id="payStatus">инициализация платёжного канала…</p>
+    </div>
+  </div>
+
+  <script src="./scripts/main.js"></script>
+  <script src="./scripts/tickets.js" defer></script>
+</body>
+</html>

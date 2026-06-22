@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AFTERLIGHT</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wdth,wght@6..144,-10,25..100,1000&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="./stylesheets/reset.css" />
+  <link rel="stylesheet" href="./stylesheets/style.css" />
+  <link rel="stylesheet" href="./stylesheets/home.css" />
+</head>
+
+<body class="home-page">
+  <header class="topbar">
+    <a class="logo" href="./index.html">AFTERLIGHT</a>
+    <nav class="topnav">
+      <a href="./routes.html">МАРШРУТЫ</a>
+      <a href="./tickets.html">БИЛЕТЫ</a>
+      <a href="./contacts.html">КОНТАКТЫ</a>
+    </nav>
+  </header>
+
+  <div class="ticker ticker--fixed" aria-hidden="true">
+    <div class="ticker__track" id="tickerTrack">
+      <span class="ticker__text">ПОЕЗДКА СТАНОВИТСЯ ОПЫТОМ</span>
+      <span class="ticker__dot" aria-hidden="true">•</span>
+      <span class="ticker__text">ГОРОД СТАНОВИТСЯ СЦЕНОЙ</span>
+      <span class="ticker__dot" aria-hidden="true">•</span>
+    </div>
+  </div>
+
+  <main class="board">
+    <div class="board__led" aria-hidden="true"></div>
+    <div class="board__sweep" aria-hidden="true"></div>
+
+    <div class="board__panel">
+      <header class="board__hud">
+        <div class="board__live">
+          <span class="board__live-dot" aria-hidden="true"></span>
+          live dispatch
+        </div>
+        <p class="board__place">MSK · terminal night</p>
+        <time class="board__clock" id="boardClock">00:00</time>
+      </header>
+
+      <section class="board__metric" aria-label="Выполнено рейсов">
+        <p class="board__metric-k">выполнено рейсов</p>
+        <div class="board__counter" id="boardCounter" aria-live="polite"></div>
+        <p class="board__metric-sub" id="boardSub">NT·01 · NEON TRANSIT</p>
+      </section>
+
+      <section class="board__table" aria-label="Табло рейсов">
+        <div class="board__row board__row--head">
+          <span>рейс</span>
+          <span>маршрут</span>
+          <span>время</span>
+          <span>статус</span>
+        </div>
+        <div class="board__rows" id="boardRows"></div>
+      </section>
+
+      <footer class="board__foot">
+        <a class="board__link" href="./routes.html">открыть расписание →</a>
+      </footer>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="screen-viewport screen-viewport--footer">
+      <div class="footer__frame">
+        <div class="footer__inner">
+          <a class="footer__logo" href="./index.html">AFTERLIGHT</a>
+          <div class="footer__nav-wrap">
+            <span class="footer__divider" aria-hidden="true"></span>
+            <nav class="footer__menu">
+              <a class="footer__menu-link footer__menu-link--routes" href="./routes.html">МАРШРУТЫ</a>
+              <a class="footer__menu-link footer__menu-link--tickets" href="./tickets.html">БИЛЕТЫ</a>
+              <a class="footer__menu-link footer__menu-link--home" href="./index.html">ГЛАВНАЯ</a>
+            </nav>
+          </div>
+          <div class="footer__arrows" aria-hidden="true">
+            <span>☜</span><span>☜</span><span>☜</span><span>☜</span><span>☜</span><span>☜</span>
+          </div>
+          <div class="footer__contact">
+            <a class="footer__handle" href="./contacts.html">@dropliza</a>
+            <div class="footer__phone-block">
+              <span class="footer__phone-label">круглосуточная линия маршрута</span>
+              <span class="footer__phone">8 800 000 80 11</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./scripts/main.js"></script>
+  <script src="./scripts/home.js"></script>
+</body>
+</html>
